@@ -2,22 +2,8 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Search from "./components/Search";
 import Spinner from "./components/Spinner";
-interface Movie {
-  adult: boolean;
-  backdrop_path: string;
-  genre_ids: number[];
-  id: number;
-  original_language: string;
-  original_title: string;
-  overview: string;
-  popularity: number;
-  poster_path: string;
-  release_date: string;
-  title: string;
-  video: boolean;
-  vote_average: number;
-  vote_count: number;
-}
+import { Movie } from "./types/index";
+import MovieCard from "./components/MovieCard";
 
 const API_BASE_URL = "https://api.themoviedb.org/3";
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
@@ -86,9 +72,7 @@ function App() {
           ) : (
             <ul>
               {movieList.map((movie) => (
-                <p className="text-white" key={movie.id}>
-                  {movie.title}
-                </p>
+                <MovieCard key={movie.id} movie={movie} />
               ))}
             </ul>
           )}
