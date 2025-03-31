@@ -14,3 +14,10 @@ export interface Movie {
   vote_average: number;
   vote_count: number;
 }
+
+export interface TrendindMovies {
+  searchTerm: string;
+  count: number;
+  movie_id: number;
+  poster_url: string;
+}
